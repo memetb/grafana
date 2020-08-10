@@ -11,7 +11,9 @@
 .main-view {
   position: relative;
   flex-grow: 1;
-  background: $page-bg;
+  background: url(../img/cleandesign/logo-vertical-translucent.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
 }
 
 .page-explore,
