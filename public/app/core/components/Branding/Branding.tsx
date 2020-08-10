@@ -8,21 +8,26 @@ export interface BrandComponentProps {
 }
 
 const LoginLogo: FC<BrandComponentProps> = ({ className }) => {
-  return <img className={className} src="public/img/grafana_icon.svg" alt="Grafana" />;
+  const size = css`
+    max-width: 360px !important;
+  `;
+  return <img className={cx(size, className)} src="public/img/cleandesign/title-white.svg" alt="CleanDesign" />;
 };
 
 const LoginBackground: FC<BrandComponentProps> = ({ className, children }) => {
-  const theme = useTheme();
   const background = css`
-    background: url(public/img/login_background_${theme.isDark ? 'dark' : 'light'}.svg);
+    background: url(public/img/cleandesign/login-background.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
   `;
 
   return <div className={cx(background, className)}>{children}</div>;
 };
 
 const MenuLogo: FC<BrandComponentProps> = ({ className }) => {
-  return <img className={className} src="public/img/grafana_icon.svg" alt="Grafana" />;
+  const theme = useTheme();
+  const icon = `public/img/icons_${theme.isLight ? 'light' : 'dark'}_theme/icon_home.svg`;
+  return <img className={className} src={icon} alt="Home" />;
 };
 
 const LoginBoxBackground = () => {
@@ -38,15 +43,10 @@ export class Branding {
   static LoginBackground = LoginBackground;
   static MenuLogo = MenuLogo;
   static LoginBoxBackground = LoginBoxBackground;
-  static AppTitle = 'Grafana';
-  static LoginTitle = 'Welcome to Grafana';
+  static AppTitle = 'CleanDesign';
+  static LoginTitle = 'Data Room';
   static GetLoginSubTitle = () => {
-    const slogans = [
-      "Don't get in the way of the data",
-      'Your single pane of glass',
-      'Built better together',
-      'Democratising data',
-    ];
+    const slogans = ['Power  ⁃  Control  ⁃  Insight'];
     const count = slogans.length;
     return slogans[Math.floor(Math.random() * count)];
   };
